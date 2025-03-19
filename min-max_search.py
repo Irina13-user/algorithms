@@ -1,33 +1,29 @@
+def min_search(number, min_num1, min_num2):
+    if number < min_num1:
+        return number, min_num1
+    elif number < min_num2:
+        return min_num1, number
+    return min_num1, min_num2
+def max_search(number, max_num1, max_num2):
+    if number > max_num1:
+        return number, max_num1
+    elif number > max_num2:
+        return max_num1, number
+    return max_num1, max_num2
+
 answer = input("do you know quantity of numbers? (y/n) ")
 if answer.upper() == "Y" or answer.upper() == "YES":
     count = int(input("enter quantity of numbers: "))
     max_num1 = max_num2 = min_num1 = min_num2 = int(input())
     for _ in range(count - 1):
         number = int(input())
-        if number < min_num1:
-            min_num2 = min_num1
-            min_num1 = number
-        elif number < min_num2:
-            min_num2 = number
-        elif number > max_num1:
-            max_num2 = max_num1
-            max_num1 = number
-        elif number > max_num2:
-            max_num2 = number
-    print(max_num1, max_num2, min_num1, min_num2)
+        min_num1, min_num2 = min_search(number, min_num1, min_num2)
+        max_num1, max_num2 = max_search(number, max_num1, max_num2)
 else:
     max_num1 = max_num2 = min_num1 = min_num2 = int(input())
     number = int(input())
     while number:
-        if number < min_num1:
-            min_num2 = min_num1
-            min_num1 = number
-        elif number < min_num2:
-            min_num2 = number
-        elif number > max_num1:
-            max_num2 = max_num1
-            max_num1 = number
-        elif number > max_num2:
-            max_num2 = number
+        min_num1, min_num2 = min_search(number, min_num1, min_num2)
+        max_num1, max_num2 = max_search(number, max_num1, max_num2)
         number = int(input())
-    print(max_num1, max_num2, min_num1, min_num2)
+print(max_num1, max_num2, min_num1, min_num2)
