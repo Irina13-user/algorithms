@@ -10,17 +10,27 @@ def max_search(number, max_num1, max_num2):
     elif number > max_num2:
         return max_num1, number
     return max_num1, max_num2
-
+def initialise():
+    global min_num2
+    global min_num1
+    global max_num1
+    global max_num2
+    number1 = int(input())
+    number2 = int(input())
+    if number1 > number2:
+        number1, number2 = number2, number1
+    min_num1, min_num2 = number1, number2
+    max_num1, max_num2 = number2, number1
 answer = input("do you know quantity of numbers? (y/n) ")
 if answer.upper() == "Y" or answer.upper() == "YES":
     count = int(input("enter quantity of numbers: "))
-    max_num1 = max_num2 = min_num1 = min_num2 = int(input())
-    for _ in range(count - 1):
+    initialise()
+    for _ in range(count - 2):
         number = int(input())
         min_num1, min_num2 = min_search(number, min_num1, min_num2)
         max_num1, max_num2 = max_search(number, max_num1, max_num2)
 else:
-    max_num1 = max_num2 = min_num1 = min_num2 = int(input())
+    initialise()
     number = int(input())
     while number:
         min_num1, min_num2 = min_search(number, min_num1, min_num2)
