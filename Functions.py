@@ -18,8 +18,19 @@ def quantity_of_divisors(number):
     if number % (int(number ** .5)) == 0:
         quantity += 1
     return quantity
+def power(number, exponent):
+    if exponent == 0:
+        return 1
+    if exponent % 2 == 0:
+        return power(number ** 2, exponent // 2)
+    return power(number ** 2, (exponent - 1) // 2) * number
+
+
+
 
 number = int(input())
-print(quantity_of_digits(number))
-print(sum_of_digits(number))
-print(quantity_of_divisors(number))
+exponent = int(input())
+# print(quantity_of_digits(number))
+# print(sum_of_digits(number))
+# print(quantity_of_divisors(number))
+print(power(number, exponent))
