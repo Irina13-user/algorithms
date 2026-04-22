@@ -29,6 +29,7 @@
 # else:
 #     print("NO")
 #3
+"""
 min_value = 30000
 n = int(input())
 for _ in range(n):
@@ -36,8 +37,26 @@ for _ in range(n):
     if number % 2 == 0:
         min_value = min(number, min_value)
 print(min_value)
+"""
+"""
+a = input()
+first = 0
+second = len(a) - 1
+palindrome = a
+while first < second:
+    if palindrome[first] != palindrome[second]:
+        print("NO")
+    first += 1
+    second -= 1
+print("YES")
 
-
+"""
+a = int(input())
+b = input()
+c = []
+for i in range(a):
+    c.append(b)
+print(c)
 
 
 
